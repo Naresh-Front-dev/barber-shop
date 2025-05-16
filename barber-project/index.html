@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Cuts Barber Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .barber-pole {
+            position: relative;
+            width: 60px;
+            height: 120px;
+            margin: 0 auto;
+        }
+        
+        .pole {
+            position: absolute;
+            width: 20px;
+            height: 120px;
+            background: #333;
+            left: 20px;
+        }
+        
+        .stripes {
+            position: absolute;
+            width: 60px;
+            height: 120px;
+            background: repeating-linear-gradient(
+                45deg,
+                #fff,
+                #fff 10px,
+                #c00 10px,
+                #c00 20px,
+                #000 20px,
+                #000 30px
+            );
+            animation: spin 4s linear infinite;
+        }
+        
+        .top, .bottom {
+            position: absolute;
+            width: 60px;
+            height: 20px;
+            background: #333;
+        }
+        
+        .top {
+            top: 0;
+        }
+        
+        .bottom {
+            bottom: 0;
+        }
+        
+        @keyframes spin {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
+        
+        .scissors-animation {
+            animation: snip 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes snip {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(10deg); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .haircut-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .barber-chair {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+        
+        .chair-base {
+            position: absolute;
+            width: 120px;
+            height: 20px;
+            background: #333;
+            bottom: 0;
+            left: 40px;
+        }
+        
+        .chair-back {
+            position: absolute;
+            width: 100px;
+            height: 120px;
+            background: #555;
+            bottom: 20px;
+            left: 50px;
+            transform: perspective(300px) rotateX(20deg);
+        }
+        
+        .chair-headrest {
+            position: absolute;
+            width: 80px;
+            height: 30px;
+            background: #444;
+            top: 20px;
+            left: 60px;
+            border-radius: 15px;
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .booking-form {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-black text-white py-4 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="barber-pole">
+                    <div class="pole"></div>
+                    <div class="stripes"></div>
+                    <div class="top"></div>
+                    <div class="bottom"></div>
+                </div>
+                <h1 class="text-2xl font-bold">CLASSIC CUTS</h1>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-red-500 transition">Home</a>
+                <a href="#services" class="hover:text-red-500 transition">Services</a>
+                <a href="#barbers" class="hover:text-red-500 transition">Our Barbers</a>
+                <a href="#gallery" class="hover:text-red-500 transition">Gallery</a>
+                <a href="#contact" class="hover:text-red-500 transition">Contact</a>
+            </div>
+            <button class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center bg-gray-900 overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <video autoplay muted loop class="absolute w-full h-full object-cover">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-barber-cutting-the-hair-of-a-man-3983-large.mp4" type="video/mp4">
+        </video>
+        
+        <div class="container mx-auto px-6 z-10 text-center text-white fade-in">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">PRECISION HAIRCUTS & SHAVES</h1>
+            <p class="text-xl md:text-2xl mb-8">Experience the traditional art of barbering with modern techniques</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#booking" class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-bold text-lg transition duration-300 transform hover:scale-105">
+                    BOOK NOW
+                </a>
+                <a href="#services" class="bg-transparent border-2 border-white hover:bg-white hover:text-black text-white px-8 py-3 rounded-full font-bold text-lg transition duration-300 transform hover:scale-105">
+                    OUR SERVICES
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+            <div class="scissors-animation text-white text-4xl">
+                <i class="fas fa-cut"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">OUR SERVICES</h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">We offer a wide range of traditional and modern barbering services to keep you looking sharp</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="haircut-card bg-gray-50 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-gray-800 flex items-center justify-center">
+                        <i class="fas fa-cut text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Classic Haircut</h3>
+                        <p class="text-gray-600 mb-4">A precision haircut with clippers and scissors, finished with a straight razor neck shave.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 font-bold text-lg">$35</span>
+                            <button class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="haircut-card bg-gray-50 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-gray-800 flex items-center justify-center">
+                        <i class="fas fa-fire text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Hot Towel Shave</h3>
+                        <p class="text-gray-600 mb-4">Traditional straight razor shave with hot towels, pre-shave oil, and post-shave balm.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 font-bold text-lg">$45</span>
+                            <button class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="haircut-card bg-gray-50 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-gray-800 flex items-center justify-center">
+                        <i class="fas fa-spa text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Beard Trim & Shape</h3>
+                        <p class="text-gray-600 mb-4">Professional beard shaping and trimming with scissors and clippers, finished with oil.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 font-bold text-lg">$25</span>
+                            <button class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Barbers Section -->
+    <section id="barbers" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">MEET OUR BARBERS</h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our skilled barbers are masters of their craft with years of experience</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Barber 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-xl">
+                    <div class="h-64 bg-gray-300 relative">
+                        <img src="https://images.unsplash.com/photo-1583864697784-a0efc8379f70?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Barber" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <h3 class="text-white text-2xl font-bold">Tony</h3>
+                            <p class="text-red-400">Master Barber</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">With over 15 years of experience, Tony specializes in classic cuts and straight razor shaves.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-red-600"><i class="fab fa-instagram text-xl"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-red-600"><i class="fab fa-twitter text-xl"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-red-600"><i class="fab fa-facebook text-xl"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Barber 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-xl">
+                    <div class="h-64 bg-gray-300 relative">
+                        <img src="/barbar-project/image/barber-hero-DqEaCdNF.jpg" alt="Barber" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <h3 class="text-white text-2xl font-bold">Carlos</h3>
+                            <p class="text-red-400">Beard Specialist</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Carlos is our beard expert, known for his meticulous attention to detail and shaping skills.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-red-600"><i class="fab fa-instagram text-xl"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-red-600"><i class="fab fa-twitter text-xl"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-red-600"><i class="fab fa-facebook text-xl"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Barber 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-xl">
+                    <div class="h-64 bg-gray-300 relative">
+                        <img src="/barbar-project/image/classic haricut img.webp" alt="Barber" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <h3 class="text-white text-2xl font-bold">Mike</h3>
+                            <p class="text-red-400">Style Expert</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Mike stays on top of the latest trends and techniques to give you a fresh, modern look.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-red-600"><i class="fab fa-instagram text-xl"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-red-600"><i class="fab fa-twitter text-xl"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-red-600"><i class="fab fa-facebook text-xl"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">OUR WORK</h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Browse through our gallery of transformations and styles</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <img src="/barbar-project/image/tending img.webp" alt="Haircut" class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Haircut" class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <img src="/barbar-project/image/girl cut.webp" alt="Haircut" class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Haircut" class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <img src="/barbar-project/image/pexels-photo-1681010.jpeg" alt="Haircut" class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1595475884562-073c30d45670?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Haircut" class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1583864697784-a0efc8379f70?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Haircut" class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Haircut" class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">BOOK AN APPOINTMENT</h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto mb-6"></div>
+                <p class="text-gray-300 max-w-2xl mx-auto">Schedule your visit with one of our expert barbers</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="booking-form rounded-lg shadow-2xl overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/2 bg-gray-800 p-8">
+                            <h3 class="text-2xl font-bold mb-6">Available Times</h3>
+                            <div class="grid grid-cols-3 gap-4">
+                                <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded transition">9:00 AM</button>
+                                <button class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded transition">10:30 AM</button>
+                                <button class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded transition">12:00 PM</button>
+                                <button class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded transition">1:30 PM</button>
+                                <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded transition">3:00 PM</button>
+                                <button class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded transition">4:30 PM</button>
+                                <button class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded transition">6:00 PM</button>
+                                <button class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded transition">7:30 PM</button>
+                                <button class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded transition">9:00 PM</button>
+                            </div>
+                            <div class="mt-8">
+                                <h4 class="font-bold mb-2">Select Barber</h4>
+                                <select class="w-full bg-gray-700 text-white p-3 rounded">
+                                    <option>Tony - Master Barber</option>
+                                    <option>Carlos - Beard Specialist</option>
+                                    <option>Mike - Style Expert</option>
+                                    <option>Any Available Barber</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-1/2 bg-gray-700 p-8">
+                            <h3 class="text-2xl font-bold mb-6">Your Details</h3>
+                            <form>
+                                <div class="mb-4">
+                                    <input type="text" placeholder="Full Name" class="w-full bg-gray-800 text-white p-3 rounded">
+                                </div>
+                                <div class="mb-4">
+                                    <input type="email" placeholder="Email" class="w-full bg-gray-800 text-white p-3 rounded">
+                                </div>
+                                <div class="mb-4">
+                                    <input type="tel" placeholder="Phone Number" class="w-full bg-gray-800 text-white p-3 rounded">
+                                </div>
+                                <div class="mb-6">
+                                    <textarea placeholder="Special Requests" class="w-full bg-gray-800 text-white p-3 rounded h-24"></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white py-3 px-4 rounded font-bold transition">
+                                    CONFIRM BOOKING
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">VISIT US</h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">We'd love to see you at our shop. Here's how to find us.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-8 max-w-6xl mx-auto">
+                <div class="md:w-1/2">
+                    <div class="bg-gray-100 p-8 rounded-lg shadow-md h-full">
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        
+                        <div class="flex items-start mb-6">
+                            <div class="text-red-600 mr-4 mt-1">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Address</h4>
+                                <p class="text-gray-600">123 Barber Street, Downtown, Cityville 10001</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-6">
+                            <div class="text-red-600 mr-4 mt-1">
+                                <i class="fas fa-phone-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Phone</h4>
+                                <p class="text-gray-600">(555) 123-4567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-6">
+                            <div class="text-red-600 mr-4 mt-1">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <p class="text-gray-600">hello@classiccuts.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-red-600 mr-4 mt-1">
+                                <i class="fas fa-clock text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Hours</h4>
+                                <p class="text-gray-600 mb-1">Monday - Friday: 9am - 9pm</p>
+                                <p class="text-gray-600 mb-1">Saturday: 8am - 10pm</p>
+                                <p class="text-gray-600">Sunday: 10am - 6pm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="h-full rounded-lg overflow-hidden shadow-md">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215256018042!2d-73.9878449241649!3d40.7484409713896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1689870223993!5m2!1sen!2sus" width="100%" height="100%" style="min-height: 400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <div class="barber-pole">
+                            <div class="pole"></div>
+                            <div class="stripes"></div>
+                            <div class="top"></div>
+                            <div class="bottom"></div>
+                        </div>
+                        <h2 class="text-2xl font-bold">CLASSIC CUTS</h2>
+                    </div>
+                    <p class="text-gray-400 mt-2">Traditional Barbering Since 1995</p>
+                </div>
+                
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-yelp text-xl"></i></a>
+                </div>
+                
+                <div>
+                    <p class="text-gray-400">© 2023 Classic Cuts. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <a href="#booking" class="bg-red-600 hover:bg-red-700 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl shadow-lg floating">
+            <i class="far fa-calendar-alt"></i>
+        </a>
+    </div>
+
+    <script>
+        // Simple animation for navigation items on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Add active class to current section in navigation
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                
+                document.querySelectorAll('section').forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('text-red-500');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('text-red-500');
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Mobile menu toggle
+            const mobileMenuButton = document.querySelector('.md\\:hidden');
+            const mobileMenu = document.querySelector('.md\\:flex');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                mobileMenu.classList.toggle('flex-col');
+                mobileMenu.classList.toggle('absolute');
+                mobileMenu.classList.toggle('top-16');
+                mobileMenu.classList.toggle('left-0');
+                mobileMenu.classList.toggle('right-0');
+                mobileMenu.classList.toggle('bg-black');
+                mobileMenu.classList.toggle('py-4');
+                mobileMenu.classList.toggle('px-6');
+                mobileMenu.classList.toggle('space-y-4');
+                mobileMenu.classList.toggle('space-x-8');
+            });
+        });
+    </script>
+</body>
+</html>
